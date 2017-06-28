@@ -1,0 +1,122 @@
+﻿<%@ Master Language="VB" CodeFile="SMSMaster.master.vb" Inherits="SMSMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+    <meta content="width=device-width" name="viewport" />
+    <link href="Sources/css/empmasterstyle.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Sources/css/UltraCssClass.css" rel="stylesheet" type="text/css" />
+    <link href="Sources/css/ValidatorStyle.css" rel="stylesheet" type="text/css" />
+    <link href="Sources/css/GridStyle.css" rel="stylesheet" type="text/css" />
+    <link href="Sources/css/Title.css" rel="stylesheet" type="text/css" />
+    <link href="Sources/css/Tab.css" rel="stylesheet" type="text/css" />
+
+    <script src="Sources/js/jquery.magnifier.js" type="text/javascript"></script>
+
+    <script src="Sources/js/jquery.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .selector
+        {
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script language="JavaScript" type="text/javascript">
+    function openWindow(windowURL,windowName,windowWidth,windowHeight) {
+
+    var left = (screen.width/2)-(windowWidth/2);
+    var top = (screen.height/2)-(windowHeight/2);
+
+    window.name = 'parentWnd';
+    newWindow = window.open(windowURL,windowName,'top='+ top +',left='+ left +',width='+windowWidth+',height='+windowHeight+',toolbar=0,location=no,directories=0, status=0,menuBar=0,scrollBars=1,resizable=1');
+    newWindow.focus();
+}
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <img src="Sources/images/smslogo.png" height="80px" />
+            </td>
+            <td>
+                <asp:Label ID="lblEmpLoggedInUser" runat="server" Text="Logged In User" CssClass="label"></asp:Label>
+                <asp:LoginStatus ID="lgStatus" runat="server" LogoutAction="RedirectToLoginPage"
+                    CssClass="label" ForeColor="Blue" LogoutPageUrl="~/frmBEFTNLogin.aspx" />
+            </td>
+            <td>
+                Select Branch
+            </td>
+            <td>
+                <asp:DropDownList ID="drpBranchSelection" runat="server" AutoPostBack="True">
+                    <asp:ListItem Value="HOCon">Head Office</asp:ListItem>
+                    <asp:ListItem Value="DhanmondiCon">Dhanmondi</asp:ListItem>
+                    <asp:ListItem Value="UttaraCon">Uttara</asp:ListItem>
+                    <asp:ListItem Value="AgrabadCon">Agrabad</asp:ListItem>
+                    <asp:ListItem Value="GECCon">GEC</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <asp:Menu ID="mnuControl" runat="server" BackColor="#FFFBD6" DynamicHorizontalOffset="2"
+                    Font-Bold="False" Font-Names="Verdana" Font-Size="Medium" ForeColor="#990000"
+                    Orientation="Horizontal" StaticSubMenuIndent="10px">
+                    <StaticSelectedStyle BackColor="#FFCC66" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
+                    <DynamicMenuStyle BackColor="#FFFBD6" />
+                    <DynamicSelectedStyle BackColor="#FFCC66" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticHoverStyle BackColor="#990000" ForeColor="White" />
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/frmClientVerification.aspx" Text="Client Verification"
+                            Value="ClientVerification"></asp:MenuItem>
+                        <asp:MenuItem Text="SMS Submission" Value="SMSSubmission" 
+                            NavigateUrl="~/frmSMSSubmission.aspx">
+                            <asp:MenuItem NavigateUrl="~/frmSMSSubmissionClient.aspx" 
+                                Text="SMS Submission Client" Value="SMSSubClient"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/frmSMSSubmissionBulk.aspx" 
+                                Text="SMS Submission Bulk" Value="SMSSubBulk"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Approval" Value="SMSApproval" 
+                            NavigateUrl="~/frmSMSApproval.aspx"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/frmSendSMS.aspx" Text="Send SMS" Value="SendSMS">
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Administration" Value="Administration">
+                            <asp:MenuItem NavigateUrl="~/frmRoleManagement.aspx" Text="Role Management" 
+                                Value="RoleMgt"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/frmRolwWiseMenuPermission.aspx" 
+                                Text="Role Wise Menu Permission" Value="RoleWiseMnuPerm"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/frmUserRoleManagement.aspx" 
+                                Text="User Role Management" Value="UsrRoleMgt"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Report" Value="Report" NavigateUrl="~/frmSMSReport.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: center">
+                Developed by IT,Reliance Finance Limited
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
