@@ -83,10 +83,10 @@ Partial Class frmSendSMS
 
     Private Function SendSMS(ByVal CSMSID As String, ByVal ReceiverNo As String, ByVal SMSBody As String) As String
         Dim SMS As New clsSMSHistory()
-        Dim sid As [String] = "RelianceFin"
-        Dim user As [String] = "RelianceFin"
-        Dim pass As [String] = "@@R3liance@@"
-        Dim URI As [String] = "http://sms.sslwireless.com/pushapi/dynamic/server.php"
+        Dim sid As [String] = "companyname"
+        Dim user As [String] = "username"
+        Dim pass As [String] = "yourpass"
+        Dim URI As [String] = "api-url"
         'Dim myParameters As [String] = "user=" & user & "&pass=" & pass & "&sms[0][0]=88***********&sms[0][1]=" & System.Web.HttpUtility.UrlEncode("Test SMS1" & vbLf & "Test SMS2" & vbLf & "Test SMS API3") & "&sms[0][2]=" & "1234567890" & "&sms[1][0]=88***********&sms[1][1]=" & System.Web.HttpUtility.UrlEncode("TESTSMS2" & vbLf & "TESTSMS3") & "&sms[1][2]=" & "1234567890" & "&sid=" & sid
         Dim myParameters As [String] = "user=" & user & "&pass=" & pass & "&sms[0][0]=" & ReceiverNo & "&sms[0][1]=" & SMSBody & "&sms[0][2]=" & CSMSID & "&sid=" & sid
         Using wc As New WebClient()
